@@ -1,7 +1,9 @@
 "use client";
 import Image from "next/image";
 import "./styles/header.scss";
-import "./styles/main.scss";
+import "./styles/todoList.scss";
+import "./styles/button.scss";
+import "./styles/container.scss";
 import { TodoCard } from "./components/TodoCard";
 import { useState } from "react";
 
@@ -35,14 +37,14 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className="container">
       <header className="header">
         <Image src="/logo.svg" alt="Logo do site" width="150" height="36" />
         <h1>Bem-vindo de volta, Marcus</h1>
         <span>Segunda, 01 de dezembro de 2025</span>
       </header>
       <main>
-        <div className="container">
+        <div className="todoList">
           <h2>Suas tarefas de hoje</h2>
           <ul>
             {todoList
@@ -68,7 +70,8 @@ export default function Home() {
               ))}
           </ul>
         </div>
+        <button className="btn">Adicionar nova tarefa</button>
       </main>
-    </>
+    </div>
   );
 }
