@@ -1,9 +1,11 @@
+"use client";
 import Image from "next/image";
 import "./styles/header.scss";
 import "./styles/main.scss";
 import { TodoCard } from "./components/TodoCard";
+import { useState } from "react";
 
-const todoList = [
+const initialTodoList = [
   {
     id: 1,
     label: "Fazer algo",
@@ -22,6 +24,16 @@ const todoList = [
 ];
 
 export default function Home() {
+  const [todoList, setTodoList] = useState(initialTodoList);
+
+  const handleTodoCompleted = (id: number) => {
+    setTodoList((prevList) =>
+      prevList.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
   return (
     <>
       <header className="header">
@@ -33,17 +45,27 @@ export default function Home() {
         <div className="container">
           <h2>Suas tarefas de hoje</h2>
           <ul>
-            {todoList.map((todo) => {
-              if (todo.completed) return null;
-              return <TodoCard key={todo.id} todo={todo} />;
-            })}
+            {todoList
+              .filter((todo) => !todo.completed)
+              .map((todo) => (
+                <TodoCard
+                  key={todo.id}
+                  todo={todo}
+                  toggleCompleted={handleTodoCompleted}
+                />
+              ))}
           </ul>
           <h2>Tarefas finalizadas</h2>
           <ul>
-            {todoList.map((todo) => {
-              if (!todo.completed) return null;
-              return <TodoCard key={todo.id} todo={todo} />;
-            })}
+            {todoList
+              .filter((todo) => todo.completed)
+              .map((todo) => (
+                <TodoCard
+                  key={todo.id}
+                  todo={todo}
+                  toggleCompleted={handleTodoCompleted}
+                />
+              ))}
           </ul>
         </div>
       </main>

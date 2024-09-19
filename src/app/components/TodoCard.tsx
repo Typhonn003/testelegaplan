@@ -7,11 +7,25 @@ interface Todo {
   completed: boolean;
 }
 
-export const TodoCard = ({ todo }: { todo: Todo }) => {
+interface TodoCardProps {
+  todo: Todo;
+  toggleCompleted: (id: number) => void;
+}
+
+export const TodoCard = ({ todo, toggleCompleted }: TodoCardProps) => {
   return (
     <li className="todoCard">
-      <label htmlFor={todo.id.toString()}>
-        <input id={todo.id.toString()} type="radio" checked={todo.completed} />
+      <label
+        htmlFor={todo.id.toString()}
+        onClick={() => toggleCompleted(todo.id)}
+      >
+        <input
+          id={todo.id.toString()}
+          type="radio"
+          name={todo.label}
+          checked={todo.completed}
+          readOnly
+        />
         <div>
           {todo.completed && (
             <Image
