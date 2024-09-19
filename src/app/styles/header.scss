@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid #d7dde9;
+  padding-bottom: 1.5rem;
+  margin: 24px;
+
+  h1 {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 19.36px;
+  }
+
+  span {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 19.36px;
+    opacity: 0.54;
+  }
+}
