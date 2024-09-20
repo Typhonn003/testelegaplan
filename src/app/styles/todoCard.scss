@@ -1,0 +1,73 @@
+.todoCard {
+  padding: 1rem 0.5rem;
+  border: 1px solid #d7dde9;
+  border-radius: 0.5rem;
+  border-style: dashed;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  input {
+    display: none;
+  }
+
+  div {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    border: 1px solid #b0bbd1;
+    border-radius: 0.25rem;
+  }
+
+  label {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.21rem;
+    white-space: wrap;
+
+    input:checked + div {
+      padding: 3px;
+    }
+
+    input:checked + div + span {
+      opacity: 0.54;
+      text-decoration: line-through;
+    }
+  }
+
+  button {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    background-color: transparent;
+    border: none;
+  }
+
+  input:checked + div {
+    background: #a0dcf6;
+    border: 1px solid #0796d3;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 1rem;
+
+    button {
+      cursor: pointer;
+    }
+
+    &:hover {
+      border: 1px solid transparent;
+      background-color: #f7f9fd;
+      cursor: pointer;
+
+      label {
+        cursor: pointer;
+      }
+    }
+  }
+}
