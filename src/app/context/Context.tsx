@@ -27,9 +27,7 @@ export const TodoContext = createContext<TodoContextProps | undefined>(
 
 const initialTodoList: Todo[] = [];
 
-export const TodoProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const TodoProvider = ({ children }: { children: ReactNode }) => {
   const [todoList, setTodoList] = useState(initialTodoList);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);

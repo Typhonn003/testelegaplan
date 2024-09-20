@@ -3,7 +3,7 @@ import "../styles/deleteModal.scss";
 import "./Button";
 import { Button } from "./Button";
 
-export const DeleteTodoModal: React.FC<{ id: number }> = ({ id }) => {
+export const DeleteTodoModal = ({ id }: { id: number }) => {
   const { isDeleteModalOpen, closeDeleteModal, removeTodo } = useTodo();
 
   if (!isDeleteModalOpen) return null;

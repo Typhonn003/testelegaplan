@@ -9,11 +9,7 @@ interface Todo {
   completed: boolean;
 }
 
-interface TodoCardProps {
-  todo: Todo;
-}
-
-export const TodoCard: React.FC<TodoCardProps> = ({ todo }) => {
+export const TodoCard = ({ todo }: { todo: Todo }) => {
   const { openDeleteModal, toggleTodo } = useTodo();
 
   return (
