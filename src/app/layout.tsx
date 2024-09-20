@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./styles/reset.scss";
 import { Inter_Tight } from "next/font/google";
+import { TodoProvider } from "./context/Context";
 
 const inter = Inter_Tight({ subsets: ["latin"] });
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <TodoProvider>{children}</TodoProvider>
+      </body>
     </html>
   );
 }

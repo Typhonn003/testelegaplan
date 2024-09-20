@@ -4,53 +4,12 @@ import "./styles/header.scss";
 import "./styles/todoList.scss";
 import "./styles/button.scss";
 import "./styles/container.scss";
-import "./styles/modal.scss";
-import { useState } from "react";
 import { TodoCard } from "./components/TodoCard";
-import { Modal } from "./components/Modal";
-
-const initialTodoList = [
-  {
-    id: 1,
-    label: "Fazer algo",
-    completed: false,
-  },
-  {
-    id: 2,
-    label: "Fazer mais algo",
-    completed: true,
-  },
-  {
-    id: 3,
-    label: "Levar o lixo para fora",
-    completed: true,
-  },
-];
+import { CreateTodoModal } from "./components/CreateTodoModal";
+import { useTodo } from "./hooks/useTodo";
 
 export default function Home() {
-  const [todoList, setTodoList] = useState(initialTodoList);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleTodoCompleted = (id: number) => {
-    setTodoList((prevList) =>
-      prevList.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
-  };
-
-  const createTodo = (label: string) => {
-    const newTodo = {
-      id: todoList.length + 1,
-      label,
-      completed: false,
-    };
-    setTodoList([...todoList, newTodo]);
-    closeModal();
-  };
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const { todoList, openCreateModal } = useTodo();
 
   return (
     <div className="container">
@@ -66,11 +25,7 @@ export default function Home() {
             {todoList
               .filter((todo) => !todo.completed)
               .map((todo) => (
-                <TodoCard
-                  key={todo.id}
-                  todo={todo}
-                  toggleCompleted={handleTodoCompleted}
-                />
+                <TodoCard key={todo.id} todo={todo} />
               ))}
           </ul>
           <h2>Tarefas finalizadas</h2>
@@ -78,22 +33,14 @@ export default function Home() {
             {todoList
               .filter((todo) => todo.completed)
               .map((todo) => (
-                <TodoCard
-                  key={todo.id}
-                  todo={todo}
-                  toggleCompleted={handleTodoCompleted}
-                />
+                <TodoCard key={todo.id} todo={todo} />
               ))}
           </ul>
         </div>
-        <button className="btn" onClick={openModal}>
+        <button className="btn" onClick={openCreateModal}>
           Adicionar nova tarefa
         </button>
-        <Modal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          createTodo={createTodo}
-        />
+        <CreateTodoModal />
       </main>
     </div>
   );

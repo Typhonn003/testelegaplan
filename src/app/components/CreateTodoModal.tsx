@@ -1,22 +1,14 @@
 import { useState } from "react";
-import "../styles/modal.scss";
+import "../styles/createModal.scss";
 import "./Button";
 import { Button } from "./Button";
+import { useTodo } from "../hooks/useTodo";
 
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  createTodo: (label: string) => void;
-}
-
-export const Modal: React.FC<ModalProps> = ({
-  isOpen,
-  onClose,
-  createTodo,
-}) => {
+export const CreateTodoModal = () => {
   const [title, setTitle] = useState("");
+  const { isCreateModalOpen, createTodo, closeCreateModal } = useTodo();
 
-  if (!isOpen) return null;
+  if (!isCreateModalOpen) return null;
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     createTodo(title);
@@ -24,7 +16,7 @@ export const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div className="modal container">
+    <div className="createModal">
       <h2>Nova Tarefa</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -38,7 +30,7 @@ export const Modal: React.FC<ModalProps> = ({
         </label>
         <div>
           <Button type="submit">Adicionar</Button>
-          <Button type="button" onClick={onClose} color="grey">
+          <Button type="button" onClick={closeCreateModal} color="grey">
             Cancelar
           </Button>
         </div>
