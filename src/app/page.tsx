@@ -4,7 +4,12 @@ import "./styles/todoList.scss";
 import "./styles/container.scss";
 import Image from "next/image";
 import { useTodo } from "./hooks";
-import { Button, CreateTodoModal, ListContainer } from "./components";
+import {
+  Button,
+  CreateTodoModal,
+  DeleteTodoModal,
+  ListContainer,
+} from "./components";
 
 export default function Home() {
   const { todoList, openCreateModal } = useTodo();
@@ -25,6 +30,7 @@ export default function Home() {
         </div>
         <Button onClick={openCreateModal}>Adicionar nova tarefa</Button>
         <CreateTodoModal />
+        <DeleteTodoModal />
       </main>
     </div>
   );

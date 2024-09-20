@@ -1,7 +1,6 @@
 import "../styles/todoCard.scss";
 import Image from "next/image";
 import { useTodo } from "../hooks";
-import { DeleteTodoModal } from "../components";
 
 interface Todo {
   id: number;
@@ -10,7 +9,12 @@ interface Todo {
 }
 
 export const TodoCard = ({ todo }: { todo: Todo }) => {
-  const { openDeleteModal, toggleTodo } = useTodo();
+  const { openDeleteModal, toggleTodo, setSelectedTodoId } = useTodo();
+
+  const handleTodo = () => {
+    openDeleteModal();
+    setSelectedTodoId(todo.id);
+  };
 
   return (
     <>
@@ -37,7 +41,7 @@ export const TodoCard = ({ todo }: { todo: Todo }) => {
         </label>
         <button
           aria-label={`Botão para excluir a tarefa "${todo.label}"`}
-          onClick={openDeleteModal}
+          onClick={handleTodo}
         >
           <Image
             src="/trash.svg"
@@ -47,7 +51,6 @@ export const TodoCard = ({ todo }: { todo: Todo }) => {
           />
         </button>
       </li>
-      <DeleteTodoModal id={todo.id} />
     </>
   );
 };

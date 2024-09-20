@@ -16,9 +16,10 @@ interface TodoContextProps {
   closeCreateModal: () => void;
   openDeleteModal: () => void;
   closeDeleteModal: () => void;
+  setSelectedTodoId: (id: number) => void;
   createTodo: (label: string) => void;
   toggleTodo: (id: number) => void;
-  removeTodo: (id: number) => void;
+  removeTodo: () => void;
 }
 
 export const TodoContext = createContext<TodoContextProps | undefined>(
@@ -53,6 +54,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [idCounter, setIdCounter] = useState(5);
+  const [selectedTodoId, setSelectedTodoId] = useState(0);
 
   const createTodo = (label: string) => {
     const newTodo = {
@@ -73,8 +75,9 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  const removeTodo = (id: number) => {
-    setTodoList(todoList.filter((todo) => todo.id !== id));
+  const removeTodo = () => {
+    setTodoList(todoList.filter((todo) => todo.id !== selectedTodoId));
+    setSelectedTodoId(0);
     closeDeleteModal();
   };
 
@@ -95,6 +98,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
         closeCreateModal,
         openDeleteModal,
         closeDeleteModal,
+        setSelectedTodoId,
         createTodo,
         toggleTodo,
         removeTodo,
