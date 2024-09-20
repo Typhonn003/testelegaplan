@@ -22,11 +22,15 @@
   }
 
   @media screen and (min-width: 768px) {
-    max-width: 28.125rem;
+    width: 450px;
     max-height: 27.875rem;
     overflow-y: auto;
     margin: auto;
     margin-bottom: 1.5rem;
+
+    ul {
+      gap: 1.5rem;
+    }
   }
 }
 

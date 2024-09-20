@@ -42,18 +42,13 @@ const initialTodoList: Todo[] = [
     label: "Levar o lixo pra fora",
     completed: true,
   },
-  {
-    id: 4,
-    label: "Lavar a louça",
-    completed: false,
-  },
 ];
 
 export const TodoProvider = ({ children }: { children: ReactNode }) => {
   const [todoList, setTodoList] = useState(initialTodoList);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [idCounter, setIdCounter] = useState(5);
+  const [idCounter, setIdCounter] = useState(4);
   const [selectedTodoId, setSelectedTodoId] = useState(0);
 
   const createTodo = (label: string) => {
