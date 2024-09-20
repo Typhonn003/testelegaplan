@@ -4,8 +4,10 @@ import "./styles/header.scss";
 import "./styles/todoList.scss";
 import "./styles/button.scss";
 import "./styles/container.scss";
-import { TodoCard } from "./components/TodoCard";
+import "./styles/modal.scss";
 import { useState } from "react";
+import { TodoCard } from "./components/TodoCard";
+import { Modal } from "./components/Modal";
 
 const initialTodoList = [
   {
@@ -27,6 +29,7 @@ const initialTodoList = [
 
 export default function Home() {
   const [todoList, setTodoList] = useState(initialTodoList);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleTodoCompleted = (id: number) => {
     setTodoList((prevList) =>
@@ -35,6 +38,19 @@ export default function Home() {
       )
     );
   };
+
+  const createTodo = (label: string) => {
+    const newTodo = {
+      id: todoList.length + 1,
+      label,
+      completed: false,
+    };
+    setTodoList([...todoList, newTodo]);
+    closeModal();
+  };
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="container">
@@ -70,7 +86,14 @@ export default function Home() {
               ))}
           </ul>
         </div>
-        <button className="btn">Adicionar nova tarefa</button>
+        <button className="btn" onClick={openModal}>
+          Adicionar nova tarefa
+        </button>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          createTodo={createTodo}
+        />
       </main>
     </div>
   );
