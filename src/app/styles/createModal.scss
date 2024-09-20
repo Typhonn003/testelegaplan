@@ -51,4 +51,17 @@
     flex-direction: column;
     gap: 1rem;
   }
+
+  @media screen and (min-width: 768px) {
+    position: relative;
+    width: 28.125rem;
+    height: 17.875rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0px 24px 48px -12px #1018282e;
+
+    div {
+      flex-direction: row-reverse;
+    }
+  }
 }

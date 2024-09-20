@@ -20,4 +20,12 @@
     flex-direction: column;
     gap: 0.5rem;
   }
+
+  @media screen and (min-width: 768px) {
+    max-width: 28.125rem;
+    max-height: 27.875rem;
+    overflow-y: auto;
+    margin: auto;
+    margin-bottom: 1.5rem;
+  }
 }
