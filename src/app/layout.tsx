@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import "./styles/reset.scss";
+import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
-import { TodoProvider } from "./context/Context";
+import { TodoProvider } from "./context";
 
 const inter = Inter_Tight({ subsets: ["latin"] });
 

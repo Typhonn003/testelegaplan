@@ -1,7 +1,7 @@
-import Image from "next/image";
 import "../styles/todoCard.scss";
-import { DeleteTodoModal } from "./DeleteTodoModal";
-import { useTodo } from "../hooks/useTodo";
+import Image from "next/image";
+import { useTodo } from "../hooks";
+import { DeleteTodoModal } from "../components";
 
 interface Todo {
   id: number;

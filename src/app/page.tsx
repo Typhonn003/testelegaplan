@@ -1,12 +1,10 @@
 "use client";
-import Image from "next/image";
 import "./styles/header.scss";
 import "./styles/todoList.scss";
-import "./styles/button.scss";
 import "./styles/container.scss";
-import { TodoCard } from "./components/TodoCard";
-import { CreateTodoModal } from "./components/CreateTodoModal";
-import { useTodo } from "./hooks/useTodo";
+import Image from "next/image";
+import { useTodo } from "./hooks";
+import { Button, CreateTodoModal, TodoCard } from "./components";
 
 export default function Home() {
   const { todoList, openCreateModal } = useTodo();
@@ -37,9 +35,7 @@ export default function Home() {
               ))}
           </ul>
         </div>
-        <button className="btn" onClick={openCreateModal}>
-          Adicionar nova tarefa
-        </button>
+        <Button onClick={openCreateModal}>Adicionar nova tarefa</Button>
         <CreateTodoModal />
       </main>
     </div>

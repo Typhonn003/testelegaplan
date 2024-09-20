@@ -1,7 +1,6 @@
-import { useTodo } from "../hooks/useTodo";
 import "../styles/deleteModal.scss";
-import "./Button";
-import { Button } from "./Button";
+import { useTodo } from "../hooks";
+import { Button } from "../components";
 
 export const DeleteTodoModal = ({ id }: { id: number }) => {
   const { isDeleteModalOpen, closeDeleteModal, removeTodo } = useTodo();

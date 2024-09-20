@@ -1,8 +1,7 @@
-import { useState } from "react";
 import "../styles/createModal.scss";
-import "./Button";
-import { Button } from "./Button";
-import { useTodo } from "../hooks/useTodo";
+import { useState } from "react";
+import { useTodo } from "../hooks";
+import { Button } from "../components";
 
 export const CreateTodoModal = () => {
   const [title, setTitle] = useState("");
