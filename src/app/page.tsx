@@ -4,7 +4,7 @@ import "./styles/todoList.scss";
 import "./styles/container.scss";
 import Image from "next/image";
 import { useTodo } from "./hooks";
-import { Button, CreateTodoModal, TodoCard } from "./components";
+import { Button, CreateTodoModal, ListContainer } from "./components";
 
 export default function Home() {
   const { todoList, openCreateModal } = useTodo();
@@ -19,21 +19,9 @@ export default function Home() {
       <main>
         <div className="todoList">
           <h2>Suas tarefas de hoje</h2>
-          <ul>
-            {todoList
-              .filter((todo) => !todo.completed)
-              .map((todo) => (
-                <TodoCard key={todo.id} todo={todo} />
-              ))}
-          </ul>
+          <ListContainer list={todoList} type="completed" />
           <h2>Tarefas finalizadas</h2>
-          <ul>
-            {todoList
-              .filter((todo) => todo.completed)
-              .map((todo) => (
-                <TodoCard key={todo.id} todo={todo} />
-              ))}
-          </ul>
+          <ListContainer list={todoList} type="uncompleted" />
         </div>
         <Button onClick={openCreateModal}>Adicionar nova tarefa</Button>
         <CreateTodoModal />

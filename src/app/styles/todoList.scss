@@ -29,3 +29,15 @@
     margin-bottom: 1.5rem;
   }
 }
+
+.todoMessage {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #b0bbd1;
+  border-radius: 0.25rem;
+
+  &:hover {
+    background-color: #f7f9fd;
+    cursor: pointer;
+  }
+}

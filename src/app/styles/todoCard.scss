@@ -1,5 +1,5 @@
 .todoCard {
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   border: 1px solid #d7dde9;
   border-radius: 0.5rem;
   border-style: dashed;
@@ -54,6 +54,8 @@
   }
 
   @media screen and (min-width: 768px) {
+    padding: 1rem;
+
     button {
       cursor: pointer;
     }

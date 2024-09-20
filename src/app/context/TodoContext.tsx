@@ -1,7 +1,7 @@
 "use client";
 import { createContext, ReactNode, useState } from "react";
 
-interface Todo {
+export interface Todo {
   id: number;
   label: string;
   completed: boolean;
@@ -25,13 +25,34 @@ export const TodoContext = createContext<TodoContextProps | undefined>(
   undefined
 );
 
-const initialTodoList: Todo[] = [];
+const initialTodoList: Todo[] = [
+  {
+    id: 1,
+    label: "Lavar as mãos",
+    completed: false,
+  },
+  {
+    id: 2,
+    label: "Fazer um bolo",
+    completed: false,
+  },
+  {
+    id: 3,
+    label: "Levar o lixo pra fora",
+    completed: true,
+  },
+  {
+    id: 4,
+    label: "Lavar a louça",
+    completed: false,
+  },
+];
 
 export const TodoProvider = ({ children }: { children: ReactNode }) => {
   const [todoList, setTodoList] = useState(initialTodoList);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [idCounter, setIdCounter] = useState(1);
+  const [idCounter, setIdCounter] = useState(5);
 
   const createTodo = (label: string) => {
     const newTodo = {
